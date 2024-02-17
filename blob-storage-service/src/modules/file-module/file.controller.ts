@@ -13,35 +13,6 @@ import multer from "multer";
 export class FileController{
 
     constructor(private readonly fileService:FileService){}
-    /*@ApiConsumes('multipart/form-data')
-    @ApiBody({
-        schema: {
-          type: 'object',
-          properties: {
-            file: { // 👈 this property
-              type: 'string',
-              format: 'binary',
-            },
-          },
-        },
-      })
-    @Post("blob")
-    @UseInterceptors(FileInterceptor('file'))
-    async store(@UploadedFile() file:Express.Multer.File,@Res() res:any){
-        try{
-          
-          if(!file)
-            throw new HttpException("File not provided",HttpStatus.BAD_REQUEST)
-
-          const data = new Binary(file.buffer);
-          let id= await this.fileService.store(data)
-          res.status(HttpStatus.CREATED).json({id:id})
-        }
-        catch(err){
-          res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({error:err})
-        }
-        
-    }*/
 
     @Get("blob/:id")
     async getImage(@Param('id') id:string,@Res() res:any){
